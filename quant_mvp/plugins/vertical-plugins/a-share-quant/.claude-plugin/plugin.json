@@ -1,0 +1,8 @@
+{
+  "name": "a-share-quant",
+  "version": "0.1.0",
+  "description": "Personal China A-share daily simulated trading workflows: free data ingestion, technical stock selection, open-price simulation, risk checks, and daily review",
+  "author": {
+    "name": "Personal Quant"
+  }
+}

@@ -1,0 +1,29 @@
+# A-Share Daily Trader managed-agent cookbook
+
+name: a-share-daily-trader
+model: claude-opus-4-7
+
+system:
+  file: ../../plugins/agent-plugins/a-share-daily-trader/agents/a-share-daily-trader.md
+  append: "You are running headless. Produce files under ./quant_workspace/ and never place real broker orders."
+
+tools:
+  - type: agent_toolset_20260401
+    default_config: { enabled: false }
+    configs:
+      - { name: read, enabled: true }
+      - { name: grep, enabled: true }
+      - { name: glob, enabled: true }
+      - { name: bash, enabled: true }
+      - { name: write, enabled: true }
+      - { name: edit, enabled: true }
+
+mcp_servers: []
+
+skills:
+  - { from_plugin: ../../plugins/agent-plugins/a-share-daily-trader }
+
+callable_agents:
+  - { manifest: ./subagents/data-reader.yaml }
+  - { manifest: ./subagents/strategy-runner.yaml }
+  - { manifest: ./subagents/auditor.yaml }

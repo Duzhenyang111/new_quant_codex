@@ -1,0 +1,8 @@
+{
+  "name": "a-share-daily-trader",
+  "version": "0.1.0",
+  "description": "Daily China A-share simulated trader: executes yesterday's plan at today's open and creates tomorrow's plan after today's close",
+  "author": {
+    "name": "Personal Quant"
+  }
+}

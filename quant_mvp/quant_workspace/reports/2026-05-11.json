@@ -1,0 +1,353 @@
+{
+  "trade_date": "2026-05-11",
+  "equity_at_open": 104262.3217,
+  "total_assets": 107155.3217,
+  "cash": 455.3217,
+  "portfolio": {
+    "position_count": 7,
+    "cash": 455.3217,
+    "stock_market_value": 106700.0,
+    "stock_weight": 0.995751,
+    "cash_weight": 0.004249
+  },
+  "risk": {
+    "max_drawdown": 0.0,
+    "annualized_volatility": 0.0,
+    "sharpe": 0.0,
+    "win_rate": 0.0
+  },
+  "market": {
+    "type": "index",
+    "symbol": "000001.SH",
+    "name": "上证指数",
+    "open": 4201.347,
+    "close": 4225.021,
+    "daily_return": 0.005635
+  },
+  "positions": {
+    "300209.SZ": {
+      "symbol": "300209.SZ",
+      "quantity": 800,
+      "cost_basis": 21.196357
+    },
+    "300489.SZ": {
+      "symbol": "300489.SZ",
+      "quantity": 100,
+      "cost_basis": 112.36
+    },
+    "600396.SH": {
+      "symbol": "600396.SH",
+      "quantity": 900,
+      "cost_basis": 12.385555555555555
+    },
+    "603629.SH": {
+      "symbol": "603629.SH",
+      "quantity": 100,
+      "cost_basis": 149.99999999999997
+    },
+    "688268.SH": {
+      "symbol": "688268.SH",
+      "quantity": 100,
+      "cost_basis": 183.194942
+    },
+    "688485.SH": {
+      "symbol": "688485.SH",
+      "quantity": 300,
+      "cost_basis": 56.666995
+    },
+    "688628.SH": {
+      "symbol": "688628.SH",
+      "quantity": 100,
+      "cost_basis": 98.85
+    }
+  },
+  "holdings": [
+    {
+      "symbol": "300209.SZ",
+      "industry": "未知",
+      "quantity": 800,
+      "cost_basis": 21.1964,
+      "open_price": 22.99,
+      "close_price": 23.2,
+      "daily_return": 0.009134,
+      "position_pnl_pct": 0.094528,
+      "market_value": 18560.0,
+      "weight": 0.173207
+    },
+    {
+      "symbol": "300489.SZ",
+      "industry": "未知",
+      "quantity": 100,
+      "cost_basis": 112.36,
+      "open_price": 116.19,
+      "close_price": 127.9,
+      "daily_return": 0.100783,
+      "position_pnl_pct": 0.138305,
+      "market_value": 12790.0,
+      "weight": 0.119359
+    },
+    {
+      "symbol": "600396.SH",
+      "industry": "未知",
+      "quantity": 900,
+      "cost_basis": 12.3856,
+      "open_price": 12.67,
+      "close_price": 13.68,
+      "daily_return": 0.079716,
+      "position_pnl_pct": 0.104512,
+      "market_value": 12312.0,
+      "weight": 0.114899
+    },
+    {
+      "symbol": "603629.SH",
+      "industry": "未知",
+      "quantity": 100,
+      "cost_basis": 150.0,
+      "open_price": 167.55,
+      "close_price": 162.82,
+      "daily_return": -0.02823,
+      "position_pnl_pct": 0.085467,
+      "market_value": 16282.0,
+      "weight": 0.151948
+    },
+    {
+      "symbol": "688268.SH",
+      "industry": "未知",
+      "quantity": 100,
+      "cost_basis": 183.1949,
+      "open_price": 164.24,
+      "close_price": 184.2,
+      "daily_return": 0.121529,
+      "position_pnl_pct": 0.005486,
+      "market_value": 18420.0,
+      "weight": 0.1719
+    },
+    {
+      "symbol": "688485.SH",
+      "industry": "未知",
+      "quantity": 300,
+      "cost_basis": 56.667,
+      "open_price": 65.27,
+      "close_price": 63.42,
+      "daily_return": -0.028344,
+      "position_pnl_pct": 0.11917,
+      "market_value": 19026.0,
+      "weight": 0.177555
+    },
+    {
+      "symbol": "688628.SH",
+      "industry": "未知",
+      "quantity": 100,
+      "cost_basis": 98.85,
+      "open_price": 96.33,
+      "close_price": 93.1,
+      "daily_return": -0.033531,
+      "position_pnl_pct": -0.058169,
+      "market_value": 9310.0,
+      "weight": 0.086883
+    }
+  ],
+  "trades": [],
+  "skipped_orders": {
+    "603629.SH": "insufficient_cash_or_already_target",
+    "301396.SZ": "insufficient_cash_or_already_target",
+    "300209.SZ": "insufficient_cash_or_already_target",
+    "688048.SH": "insufficient_cash_or_already_target",
+    "600396.SH": "insufficient_cash_or_already_target"
+  },
+  "selected_symbols": [
+    "603629.SH",
+    "300489.SZ",
+    "600396.SH",
+    "300209.SZ",
+    "688048.SH"
+  ],
+  "stock_pool": [
+    {
+      "symbol": "603629.SH",
+      "score": 5.511367,
+      "target_weight": 0.19,
+      "reason": "rank_1_technical_score",
+      "metrics": {
+        "momentum_20": 1.312784,
+        "momentum_60": 2.957705,
+        "trend": 0.482421,
+        "liquidity": 22.665654,
+        "low_volatility": -0.905901
+      }
+    },
+    {
+      "symbol": "300489.SZ",
+      "score": 4.956179,
+      "target_weight": 0.19,
+      "reason": "rank_2_technical_score",
+      "metrics": {
+        "momentum_20": 1.498047,
+        "momentum_60": 1.998125,
+        "trend": 0.489988,
+        "liquidity": 21.381412,
+        "low_volatility": -1.099287
+      }
+    },
+    {
+      "symbol": "600396.SH",
+      "score": 4.712107,
+      "target_weight": 0.19,
+      "reason": "rank_3_technical_score",
+      "metrics": {
+        "momentum_20": 0.78125,
+        "momentum_60": 3.514851,
+        "trend": 0.451494,
+        "liquidity": 21.875102,
+        "low_volatility": -1.1408
+      }
+    },
+    {
+      "symbol": "300209.SZ",
+      "score": 4.083869,
+      "target_weight": 0.19,
+      "reason": "rank_4_technical_score",
+      "metrics": {
+        "momentum_20": 0.984602,
+        "momentum_60": 2.372093,
+        "trend": 0.37469,
+        "liquidity": 21.740924,
+        "low_volatility": -1.055849
+      }
+    },
+    {
+      "symbol": "688048.SH",
+      "score": 4.056264,
+      "target_weight": 0.19,
+      "reason": "rank_5_technical_score",
+      "metrics": {
+        "momentum_20": 0.815401,
+        "momentum_60": 2.38225,
+        "trend": 0.467518,
+        "liquidity": 22.600657,
+        "low_volatility": -1.034007
+      }
+    }
+  ],
+  "rejected_symbols": {
+    "000038.SZ": "insufficient_history",
+    "000040.SZ": "low_liquidity",
+    "000046.SZ": "low_liquidity",
+    "000413.SZ": "low_liquidity",
+    "000416.SZ": "low_liquidity",
+    "000606.SZ": "insufficient_history",
+    "000616.SZ": "insufficient_history",
+    "000622.SZ": "low_liquidity",
+    "000638.SZ": "low_liquidity",
+    "000667.SZ": "insufficient_history",
+    "000671.SZ": "insufficient_history",
+    "000861.SZ": "low_liquidity",
+    "000918.SZ": "insufficient_history",
+    "000961.SZ": "low_liquidity",
+    "000971.SZ": "low_liquidity",
+    "000976.SZ": "low_liquidity",
+    "000996.SZ": "low_liquidity",
+    "001323.SZ": "low_liquidity",
+    "002002.SZ": "low_liquidity",
+    "002087.SZ": "low_liquidity",
+    "002113.SZ": "insufficient_history",
+    "002207.SZ": "low_liquidity",
+    "002280.SZ": "low_liquidity",
+    "002288.SZ": "low_liquidity",
+    "002325.SZ": "low_liquidity",
+    "002341.SZ": "low_liquidity",
+    "002411.SZ": "insufficient_history",
+    "002417.SZ": "insufficient_history",
+    "002433.SZ": "low_liquidity",
+    "002435.SZ": "low_liquidity",
+    "002502.SZ": "low_liquidity",
+    "002503.SZ": "insufficient_history",
+    "002504.SZ": "insufficient_history",
+    "002610.SZ": "low_liquidity",
+    "002621.SZ": "low_liquidity",
+    "002699.SZ": "low_liquidity",
+    "002751.SZ": "insufficient_history",
+    "002776.SZ": "low_liquidity",
+    "002808.SZ": "low_liquidity",
+    "002872.SZ": "low_liquidity",
+    "002898.SZ": "low_liquidity",
+    "300029.SZ": "low_liquidity",
+    "300089.SZ": "insufficient_history",
+    "300117.SZ": "low_liquidity",
+    "300208.SZ": "low_liquidity",
+    "300273.SZ": "insufficient_history",
+    "300280.SZ": "low_liquidity",
+    "300309.SZ": "insufficient_history",
+    "300330.SZ": "insufficient_history",
+    "300336.SZ": "insufficient_history",
+    "300391.SZ": "low_liquidity",
+    "300392.SZ": "insufficient_history",
+    "300495.SZ": "low_liquidity",
+    "300526.SZ": "insufficient_history",
+    "300742.SZ": "low_liquidity",
+    "300799.SZ": "low_liquidity",
+    "301531.SZ": "insufficient_history",
+    "301666.SZ": "insufficient_history",
+    "301682.SZ": "insufficient_history",
+    "600070.SH": "low_liquidity",
+    "600077.SH": "insufficient_history",
+    "600083.SH": "low_liquidity",
+    "600112.SH": "low_liquidity",
+    "600122.SH": "insufficient_history",
+    "600193.SH": "low_liquidity",
+    "600200.SH": "low_liquidity",
+    "600220.SH": "low_liquidity",
+    "600242.SH": "insufficient_history",
+    "600290.SH": "low_liquidity",
+    "600306.SH": "low_liquidity",
+    "600321.SH": "low_liquidity",
+    "600337.SH": "low_liquidity",
+    "600355.SH": "low_liquidity",
+    "600393.SH": "insufficient_history",
+    "600421.SH": "low_liquidity",
+    "600462.SH": "low_liquidity",
+    "600532.SH": "insufficient_history",
+    "600565.SH": "low_liquidity",
+    "600599.SH": "low_liquidity",
+    "600647.SH": "low_liquidity",
+    "600696.SH": "low_liquidity",
+    "600766.SH": "low_liquidity",
+    "600767.SH": "insufficient_history",
+    "600781.SH": "insufficient_history",
+    "600818.SH": "low_liquidity",
+    "600823.SH": "low_liquidity",
+    "600834.SH": "low_liquidity",
+    "600836.SH": "low_liquidity",
+    "600898.SH": "low_liquidity",
+    "601010.SH": "low_liquidity",
+    "601258.SH": "insufficient_history",
+    "603008.SH": "low_liquidity",
+    "603133.SH": "low_liquidity",
+    "603235.SH": "low_liquidity",
+    "603388.SH": "low_liquidity",
+    "603555.SH": "low_liquidity",
+    "603963.SH": "low_liquidity",
+    "605081.SH": "low_liquidity",
+    "605199.SH": "low_liquidity",
+    "688086.SH": "insufficient_history",
+    "688459.SH": "low_liquidity",
+    "688555.SH": "insufficient_history",
+    "688808.SH": "insufficient_history",
+    "688816.SH": "insufficient_history",
+    "688820.SH": "insufficient_history"
+  },
+  "insights": [
+    "今日按开盘价执行 0 笔交易：买入 0 笔，卖出 0 笔。",
+    "当前股票仓位 99.6%，现金仓位 0.4%。",
+    "上证指数 ???? 0.56%??? 4201.35??? 4225.02?",
+    "明日候选池前列：603629.SH, 300489.SZ, 600396.SH, 300209.SZ, 688048.SH。"
+  ],
+  "breadth": {
+    "sample_count": 2369,
+    "average_return": 0.007308,
+    "advance_count": 1324,
+    "decline_count": 989,
+    "flat_count": 56,
+    "advance_ratio": 0.558886
+  }
+}

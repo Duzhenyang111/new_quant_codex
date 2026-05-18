@@ -1,0 +1,58 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+node_modules/
+vendor/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+out/
+target/
+*.log
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# Testing
+coverage/
+.coverage
+*.cover
+.pytest_cache/
+test-results/
+.playwright-cli/
+
+# Quant MVP generated market data and caches
+quant_mvp/quant_workspace/data/market_data.sqlite
+quant_mvp/quant_workspace/data/*.sqlite
+quant_mvp/quant_workspace/data/*.csv
+quant_mvp/quant_workspace/data/*.log
+quant_mvp/quant_workspace/data/*.err.log
+quant_mvp/quant_workspace/data/symbols/
+quant_mvp/quant_workspace/data/indices/
+
+# Package files
+*.egg-info/
+.eggs/
+
+# Personal files
+TASKS.md
+MEMORY.md
+.claude/worktrees/

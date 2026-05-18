@@ -1,0 +1,40 @@
+{
+  "cash": 455.3217,
+  "positions": {
+    "300209.SZ": {
+      "symbol": "300209.SZ",
+      "quantity": 800,
+      "cost_basis": 21.196357
+    },
+    "300489.SZ": {
+      "symbol": "300489.SZ",
+      "quantity": 100,
+      "cost_basis": 112.36
+    },
+    "600396.SH": {
+      "symbol": "600396.SH",
+      "quantity": 900,
+      "cost_basis": 12.385555555555555
+    },
+    "603629.SH": {
+      "symbol": "603629.SH",
+      "quantity": 100,
+      "cost_basis": 149.99999999999997
+    },
+    "688268.SH": {
+      "symbol": "688268.SH",
+      "quantity": 100,
+      "cost_basis": 183.194942
+    },
+    "688485.SH": {
+      "symbol": "688485.SH",
+      "quantity": 300,
+      "cost_basis": 56.666995
+    },
+    "688628.SH": {
+      "symbol": "688628.SH",
+      "quantity": 100,
+      "cost_basis": 98.85
+    }
+  }
+}

@@ -1,0 +1,17 @@
+name: a-share-run-auditor
+model: claude-opus-4-7
+system:
+  text: |
+    You are read-only. Audit the latest simulated trading run for future-data
+    leakage, missing execution prices, invalid lot sizes, and unexplained skips.
+tools:
+  - type: agent_toolset_20260401
+    default_config: { enabled: false }
+    configs:
+      - { name: read, enabled: true }
+      - { name: grep, enabled: true }
+      - { name: glob, enabled: true }
+mcp_servers: []
+skills:
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/risk-control }
+callable_agents: []

@@ -1,0 +1,8 @@
+[
+  {
+    "event": "Run A-share daily simulated trading for 2026-05-15 using previous plan 2026-05-14."
+  },
+  {
+    "event": "Audit the latest A-share daily paper-trading run and explain skipped orders."
+  }
+]

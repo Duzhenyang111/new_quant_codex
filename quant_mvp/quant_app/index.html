@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quant MVP 工作台</title>
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.replace("http://127.0.0.1:8765/quant_mvp/quant_app/index.html");
+      }
+    </script>
+    <link rel="stylesheet" href="./portal.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="side-rail" aria-label="主导航">
+        <a class="brand" href="./index.html" aria-label="Quant MVP 首页">
+          <span class="brand-mark">Q</span>
+          <span>
+            <strong>Quant MVP</strong>
+            <small>A 股模拟交易</small>
+          </span>
+        </a>
+        <nav class="rail-nav">
+          <button class="rail-link active" type="button" data-view="overview">总览</button>
+          <button class="rail-link" type="button" data-view="plan">交易计划</button>
+          <button class="rail-link" type="button" data-view="portfolio">持仓交易</button>
+          <button class="rail-link" type="button" data-view="research">选股解释</button>
+          <button class="rail-link" type="button" data-view="data">数据状态</button>
+        </nav>
+        <div class="rail-footer">
+          <a href="./dashboard.html">BI 看板</a>
+          <a href="./report.html">日报页</a>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Daily Trading Console</p>
+            <h1>今日组合工作台</h1>
+            <p class="muted">收益、仓位、明日计划、风险提示和数据健康度集中处理。</p>
+          </div>
+          <div class="toolbar">
+            <button id="prevDayButton" class="icon-button" type="button" aria-label="上一交易日">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+            </button>
+            <select id="reportDateSelect" class="select" aria-label="选择报告日期"></select>
+            <button id="nextDayButton" class="icon-button" type="button" aria-label="下一交易日">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </button>
+            <button id="refreshButton" class="primary-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v6h-6" /></svg>
+              刷新
+            </button>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-label="关键状态">
+          <article>
+            <span>交易日</span>
+            <strong id="tradeDate">--</strong>
+          </article>
+          <article>
+            <span>总资产</span>
+            <strong id="totalAssets">--</strong>
+          </article>
+          <article>
+            <span id="todayReturnLabel">今日收益</span>
+            <strong id="todayReturn">--</strong>
+          </article>
+          <article>
+            <span>累计收益</span>
+            <strong id="cumulativeReturn">--</strong>
+          </article>
+          <article>
+            <span>现金</span>
+            <strong id="cash">--</strong>
+          </article>
+        </section>
+
+        <section class="view active" data-view-panel="overview">
+          <div class="main-grid">
+            <article class="panel decision-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>今日行动</h2>
+                  <p class="muted">先看是否需要执行、调仓或检查数据。</p>
+                </div>
+              </div>
+              <div id="actionSummary" class="action-list"></div>
+              <div class="allocation-card">
+                <div class="section-title">
+                  <span>仓位结构</span>
+                  <strong id="positionSummary">--</strong>
+                </div>
+                <div class="allocation-bar">
+                  <span id="stockBar" class="stock-bar"></span>
+                  <span id="cashBar" class="cash-bar"></span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>风险雷达</h2>
+                  <p class="muted">组合、回撤、胜率和数据新鲜度。</p>
+                </div>
+              </div>
+              <div class="risk-grid">
+                <div><span>最大回撤</span><strong id="maxDrawdown">--</strong></div>
+                <div><span>年化波动</span><strong id="volatility">--</strong></div>
+                <div><span>Sharpe</span><strong id="sharpe">--</strong></div>
+                <div><span>胜率</span><strong id="winRate">--</strong></div>
+              </div>
+              <div id="riskAlerts" class="alert-list"></div>
+            </article>
+          </div>
+
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2>账户 vs 大盘</h2>
+                <p class="muted">支持日、月、年聚合，悬停查看区间收益。</p>
+              </div>
+              <div class="segmented" aria-label="走势粒度">
+                <button class="segmented-button active" type="button" data-chart-mode="day">日</button>
+                <button class="segmented-button" type="button" data-chart-mode="month">月</button>
+                <button class="segmented-button" type="button" data-chart-mode="year">年</button>
+              </div>
+            </div>
+            <div class="chart-wrap" id="chartWrap">
+              <svg id="globalChart" viewBox="0 0 960 320" role="img" aria-label="账户与大盘收益曲线"></svg>
+              <div id="chartTooltip" class="chart-tooltip" hidden></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" data-view-panel="plan">
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2>明日交易计划</h2>
+                <p class="muted">按买卖方向筛选，点击行查看因子细节。</p>
+              </div>
+              <div class="table-tools">
+                <select id="planActionFilter" class="select" aria-label="筛选计划方向">
+                  <option value="all">全部方向</option>
+                  <option value="buy">只看买入</option>
+                  <option value="sell">只看卖出</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>股票</th>
+                    <th>动作</th>
+                    <th>目标仓位</th>
+                    <th>分数</th>
+                    <th>原因</th>
+                    <th>详情</th>
+                  </tr>
+                </thead>
+                <tbody id="planRows"></tbody>
+              </table>
+            </div>
+            <aside id="factorDrawer" class="factor-drawer" hidden></aside>
+          </article>
+        </section>
+
+        <section class="view" data-view-panel="portfolio">
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2>持仓</h2>
+                <p class="muted">支持搜索股票代码、行业或名称。</p>
+              </div>
+              <input id="holdingSearch" class="input" type="search" placeholder="搜索持仓" />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>股票</th>
+                    <th>数量</th>
+                    <th>成本</th>
+                    <th>现价</th>
+                    <th>日涨跌</th>
+                    <th>持仓盈亏</th>
+                    <th>市值</th>
+                    <th>权重</th>
+                  </tr>
+                </thead>
+                <tbody id="holdingRows"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2>今日成交</h2>
+                <p class="muted">展示开盘模拟成交与跳过原因。</p>
+              </div>
+              <select id="tradeActionFilter" class="select" aria-label="筛选成交方向">
+                <option value="all">全部成交</option>
+                <option value="buy">买入</option>
+                <option value="sell">卖出</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>股票</th>
+                    <th>动作</th>
+                    <th>数量</th>
+                    <th>价格</th>
+                    <th>金额</th>
+                    <th>原因</th>
+                  </tr>
+                </thead>
+                <tbody id="tradeRows"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" data-view-panel="research">
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2 id="poolTitle">AI 动量选股池</h2>
+                <p class="muted">从动量、趋势、流动性和低波动维度解释候选股票。</p>
+              </div>
+            </div>
+            <div id="stockPool" class="pool-grid"></div>
+          </article>
+
+          <article class="panel wide">
+            <div class="panel-heading">
+              <h2>策略洞察</h2>
+            </div>
+            <div id="insights" class="insight-box"></div>
+          </article>
+        </section>
+
+        <section class="view" data-view-panel="data">
+          <article class="panel wide">
+            <div class="panel-heading">
+              <div>
+                <h2>数据健康度</h2>
+                <p class="muted">行情源、覆盖范围、行数和缓存状态。</p>
+              </div>
+            </div>
+            <div class="data-status">
+              <span id="dataSource">--</span>
+              <span id="dataRange">--</span>
+              <span id="dataRows">--</span>
+              <span id="dataNote">--</span>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="./app.js?v=20260518-workbench"></script>
+  </body>
+</html>

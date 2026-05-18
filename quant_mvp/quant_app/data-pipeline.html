@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>数据流程</title>
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body>
+    <main class="module-shell">
+      <header class="module-header">
+        <div>
+          <p class="eyebrow">Data Pipeline</p>
+          <h1>数据页面</h1>
+          <p class="muted">说明免费数据源如何进入本地缓存和 SQLite，供选股、回测和前端使用。</p>
+        </div>
+        <nav class="nav">
+          <a href="./index.html">首页</a>
+          <a href="./dashboard.html">BI 看板</a>
+          <a href="./report.html">日报</a>
+        </nav>
+      </header>
+      <section class="panel grid">
+        <article class="info-card"><strong>股票日线</strong><span>优先使用免费源下载 A 股日线，并缓存为单股 CSV。</span></article>
+        <article class="info-card"><strong>指数日线</strong><span>上证指数、深证成指、沪深300 用于大盘对比。</span></article>
+        <article class="info-card"><strong>SQLite</strong><span><code>market_data.sqlite</code> 保存 bars 和 indices 表。</span></article>
+      </section>
+      <section class="panel method-panel" data-method-page="data">
+        <div class="panel-heading">
+          <div>
+            <h2>程序方法与原理</h2>
+            <p class="muted">这里解释免费行情数据如何保存、入库，以及为什么当前使用 SQLite。</p>
+          </div>
+          <label class="method-control">
+            <span>选择数据方法</span>
+            <select class="method-select" aria-label="选择数据方法"></select>
+          </label>
+        </div>
+        <div class="method-content" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h2>数据落地流程</h2>
+        <div class="pipeline">
+          <div class="step"><span class="tag">下载</span><span>按股票代码下载最近三年日线，失败股票单独记录，避免阻塞主流程。</span></div>
+          <div class="step"><span class="tag">缓存</span><span>每只股票写入 <code>quant_workspace/data/symbols/&lt;symbol&gt;.csv</code>。</span></div>
+          <div class="step"><span class="tag">入库</span><span>CSV 导入 SQLite，主键为 symbol + date，重复导入会 upsert。</span></div>
+          <div class="step"><span class="tag">读取</span><span>回测脚本从 SQLite 批量读取一年窗口，避免每天重复扫全量 CSV。</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>运行示例</h2>
+        <p class="muted">读取本地状态文件，查看当前股票缓存、SQLite 和指数数据概况。</p>
+        <div class="action-row">
+          <button class="action-button" type="button" data-demo="data-status">查看数据状态</button>
+          <button class="action-button secondary" type="button" data-demo="data-sample">查看样例数据文件</button>
+        </div>
+        <div id="demoOutput" class="demo-output">点击按钮后显示示例。</div>
+      </section>
+    </main>
+    <script src="./module-methods.js?v=20260515-methods"></script>
+    <script src="./module-actions.js?v=20260515-functions"></script>
+  </body>
+</html>

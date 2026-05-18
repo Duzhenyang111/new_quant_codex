@@ -1,0 +1,82 @@
+{
+  "trade_date": "2026-05-13",
+  "execute_date": "next_open",
+  "execute_price": "next_open",
+  "orders": [
+    {
+      "symbol": "600396.SH",
+      "action": "buy",
+      "target_weight": 0.19,
+      "reason": "20日动量 149.40%，60日动量 429.07%，均线趋势 49.21%，成交额流动性得分 21.67，波动率约 104.11%",
+      "score": 6.489313,
+      "metrics": {
+        "momentum_20": 1.493976,
+        "momentum_60": 4.290735,
+        "trend": 0.49207,
+        "liquidity": 21.667464,
+        "low_volatility": -1.04109
+      }
+    },
+    {
+      "symbol": "603629.SH",
+      "action": "buy",
+      "target_weight": 0.19,
+      "reason": "20日动量 137.63%，60日动量 331.78%，均线趋势 52.01%，成交额流动性得分 22.64，波动率约 93.51%",
+      "score": 5.749843,
+      "metrics": {
+        "momentum_20": 1.376307,
+        "momentum_60": 3.31775,
+        "trend": 0.520064,
+        "liquidity": 22.639865,
+        "low_volatility": -0.935058
+      }
+    },
+    {
+      "symbol": "300209.SZ",
+      "action": "buy",
+      "target_weight": 0.19,
+      "reason": "20日动量 121.58%，60日动量 271.12%，均线趋势 42.10%，成交额流动性得分 21.85，波动率约 107.63%",
+      "score": 4.691722,
+      "metrics": {
+        "momentum_20": 1.215771,
+        "momentum_60": 2.711176,
+        "trend": 0.420979,
+        "liquidity": 21.845684,
+        "low_volatility": -1.076258
+      }
+    },
+    {
+      "symbol": "603738.SH",
+      "action": "buy",
+      "target_weight": 0.19,
+      "reason": "20日动量 111.10%，60日动量 232.72%，均线趋势 37.51%，成交额流动性得分 21.85，波动率约 86.44%",
+      "score": 4.22176,
+      "metrics": {
+        "momentum_20": 1.111024,
+        "momentum_60": 2.327172,
+        "trend": 0.375105,
+        "liquidity": 21.846933,
+        "low_volatility": -0.864396
+      }
+    },
+    {
+      "symbol": "301396.SZ",
+      "action": "buy",
+      "target_weight": 0.19,
+      "reason": "20日动量 71.10%，60日动量 279.03%，均线趋势 59.16%，成交额流动性得分 22.35，波动率约 119.40%",
+      "score": 4.188043,
+      "metrics": {
+        "momentum_20": 0.71101,
+        "momentum_60": 2.790333,
+        "trend": 0.591597,
+        "liquidity": 22.352336,
+        "low_volatility": -1.194039
+      }
+    }
+  ],
+  "risk_limits": {
+    "max_total_equity_exposure": 0.95,
+    "max_position_weight": 0.2,
+    "cash_buffer": 0.05
+  }
+}

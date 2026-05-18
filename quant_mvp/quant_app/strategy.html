@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>策略计划</title>
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body>
+    <main class="module-shell">
+      <header class="module-header">
+        <div>
+          <p class="eyebrow">Strategy Plan</p>
+          <h1>策略页面</h1>
+          <p class="muted">说明从候选股票到明日交易计划的转换过程。</p>
+        </div>
+        <nav class="nav">
+          <a href="./index.html">首页</a>
+          <a href="./selection.html">选股</a>
+          <a href="./execution.html">执行</a>
+        </nav>
+      </header>
+      <section class="panel grid">
+        <article class="info-card"><strong>持仓目标</strong><span>默认最多 95% 股票仓位，保留约 5% 现金缓冲。</span></article>
+        <article class="info-card"><strong>单票上限</strong><span>单只股票默认不超过 20% 目标仓位。</span></article>
+        <article class="info-card"><strong>调仓</strong><span>新候选买入，不在候选池的旧持仓会生成卖出计划。</span></article>
+      </section>
+      <section class="panel method-panel" data-method-page="strategy">
+        <div class="panel-heading">
+          <div>
+            <h2>程序方法与原理</h2>
+            <p class="muted">这里解释策略页如何把候选股票转换成明日开盘执行的订单。</p>
+          </div>
+          <label class="method-control">
+            <span>选择策略方法</span>
+            <select class="method-select" aria-label="选择策略方法"></select>
+          </label>
+        </div>
+        <div class="method-content" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h2>策略计划结构</h2>
+        <div class="pipeline">
+          <div class="step"><span class="tag">trade_date</span><span>计划生成日期，也就是今天收盘后。</span></div>
+          <div class="step"><span class="tag">execute_date</span><span>下一交易日开盘执行，目前使用 next_open 标记。</span></div>
+          <div class="step"><span class="tag">orders</span><span>每条订单包含 symbol、buy/sell、target_weight、score、reason。</span></div>
+          <div class="step"><span class="tag">risk_limits</span><span>记录组合总仓位、单票仓位、现金缓冲等限制。</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>运行示例</h2>
+        <p class="muted">用最新日报生成的下一日计划，查看买入、卖出和目标仓位。</p>
+        <div class="action-row">
+          <button class="action-button" type="button" data-demo="strategy-plan">查看明日交易计划</button>
+          <button class="action-button secondary" type="button" data-demo="strategy-risk">查看仓位约束</button>
+        </div>
+        <div id="demoOutput" class="demo-output">点击按钮后显示示例。</div>
+      </section>
+    </main>
+    <script src="./module-methods.js?v=20260515-methods"></script>
+    <script src="./module-actions.js?v=20260515-functions"></script>
+  </body>
+</html>

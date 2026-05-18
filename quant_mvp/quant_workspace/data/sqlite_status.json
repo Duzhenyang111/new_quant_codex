@@ -1,0 +1,8 @@
+{
+  "database_path": "quant_workspace\\data\\market_data.sqlite",
+  "imported_symbol_rows": 1717407,
+  "imported_bars_rows": 0,
+  "imported_index_rows": 2175,
+  "bars_rows": 1717407,
+  "index_rows": 2175
+}

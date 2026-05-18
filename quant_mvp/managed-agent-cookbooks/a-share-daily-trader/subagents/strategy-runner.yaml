@@ -1,0 +1,22 @@
+name: a-share-strategy-runner
+model: claude-opus-4-7
+system:
+  text: |
+    You are the only worker allowed to write quant_workspace outputs. Run the
+    daily simulated trading batch and write account, plan, and report JSON.
+tools:
+  - type: agent_toolset_20260401
+    default_config: { enabled: false }
+    configs:
+      - { name: read, enabled: true }
+      - { name: write, enabled: true }
+      - { name: edit, enabled: true }
+      - { name: bash, enabled: true }
+mcp_servers: []
+skills:
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/daily-sim-execution }
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/stock-selection-core }
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/portfolio-construction }
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/risk-control }
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/daily-review }
+callable_agents: []

@@ -1,0 +1,18 @@
+{
+  "name": "quant-mvp",
+  "owner": {
+    "name": "Personal Quant"
+  },
+  "plugins": [
+    {
+      "name": "a-share-quant",
+      "source": "./plugins/vertical-plugins/a-share-quant",
+      "description": "Personal China A-share daily simulated trading workflows with free data, technical stock selection, open-price execution, risk checks, and daily review"
+    },
+    {
+      "name": "a-share-daily-trader",
+      "source": "./plugins/agent-plugins/a-share-daily-trader",
+      "description": "Executes yesterday's A-share paper plan at today's open and generates tomorrow's plan after today's close"
+    }
+  ]
+}

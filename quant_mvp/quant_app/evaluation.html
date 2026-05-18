@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>股票评价</title>
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body>
+    <main class="module-shell">
+      <header class="module-header">
+        <div>
+          <p class="eyebrow">Stock Evaluation</p>
+          <h1>评价股票页面</h1>
+          <p class="muted">解释一只股票为什么被选中，哪些因素贡献了分数，哪些风险导致它被过滤。</p>
+        </div>
+        <nav class="nav">
+          <a href="./index.html">首页</a>
+          <a href="./selection.html">选股</a>
+          <a href="./strategy.html">策略</a>
+        </nav>
+      </header>
+      <section class="panel grid">
+        <article class="info-card"><strong>动量</strong><span>价格相对 20 日、60 日前的变化，判断趋势强弱。</span></article>
+        <article class="info-card"><strong>趋势</strong><span>20 日均线相对 60 日均线的强弱，判断是否处在上行结构。</span></article>
+        <article class="info-card"><strong>风险</strong><span>低波动因子会惩罚剧烈波动，ST、停牌、低成交额会直接过滤。</span></article>
+      </section>
+      <section class="panel method-panel" data-method-page="evaluation">
+        <div class="panel-heading">
+          <div>
+            <h2>程序方法与原理</h2>
+            <p class="muted">这里解释股票评价页如何把“被选中”拆成能复盘的原因。</p>
+          </div>
+          <label class="method-control">
+            <span>选择评价方法</span>
+            <select class="method-select" aria-label="选择评价方法"></select>
+          </label>
+        </div>
+        <div class="method-content" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h2>评价输出长什么样</h2>
+        <div class="pipeline">
+          <div class="step"><span class="tag">原因</span><span>例如：20 日动量 12.00%，60 日动量 21.00%，均线趋势 8.00%，成交额流动性得分 17.50，波动率约 18.00%。</span></div>
+          <div class="step"><span class="tag">指标</span><span>每个入选股票都会保留 metrics，方便复盘时追溯它为什么入选。</span></div>
+          <div class="step"><span class="tag">未入选</span><span>被过滤股票会进入 rejected_symbols，用 insufficient_history、low_liquidity、paused 等原因标记。</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>运行示例</h2>
+        <p class="muted">选择最近日报中排名第一的股票，拆解它的得分和原因。</p>
+        <div class="action-row">
+          <button class="action-button" type="button" data-demo="evaluation-top">评价 Top 1 股票</button>
+          <button class="action-button secondary" type="button" data-demo="evaluation-all">查看 Top 5 因子</button>
+        </div>
+        <div id="demoOutput" class="demo-output">点击按钮后显示示例。</div>
+      </section>
+    </main>
+    <script src="./module-methods.js?v=20260515-methods"></script>
+    <script src="./module-actions.js?v=20260515-functions"></script>
+  </body>
+</html>

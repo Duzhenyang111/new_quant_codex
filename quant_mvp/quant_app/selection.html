@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>选股内核</title>
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body>
+    <main class="module-shell">
+      <header class="module-header">
+        <div>
+          <p class="eyebrow">Stock Selection</p>
+          <h1>选股页面</h1>
+          <p class="muted">说明每天复盘时，系统如何从本地 A 股股票池中筛出候选股票。</p>
+        </div>
+        <nav class="nav">
+          <a href="./index.html">首页</a>
+          <a href="./report.html">日报</a>
+          <a href="./dashboard.html">BI 看板</a>
+        </nav>
+      </header>
+      <section class="panel grid">
+        <article class="info-card"><strong>输入</strong><span>SQLite 里的股票日线，至少 60 个交易日历史。</span></article>
+        <article class="info-card"><strong>过滤</strong><span>剔除停牌、ST、成交额过低、历史不足的股票。</span></article>
+        <article class="info-card"><strong>输出</strong><span>Top N 候选股票、目标仓位、因子得分和入选原因。</span></article>
+      </section>
+      <section class="panel method-panel" data-method-page="selection">
+        <div class="panel-heading">
+          <div>
+            <h2>程序方法与原理</h2>
+            <p class="muted">这里解释选股内核到底用什么方法工作；如果切换到其他方法，下方会同步展示对应原理。</p>
+          </div>
+          <label class="method-control">
+            <span>选择选股方法</span>
+            <select class="method-select" aria-label="选择选股方法"></select>
+          </label>
+        </div>
+        <div class="method-content" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h2>计算流程</h2>
+        <div class="pipeline">
+          <div class="step"><span class="tag">Step 1</span><span>按交易日取出每只股票截至当天的历史行情。</span></div>
+          <div class="step"><span class="tag">Step 2</span><span>计算 20 日动量、60 日动量、20/60 均线趋势、成交额流动性、20 日波动率。</span></div>
+          <div class="step"><span class="tag">Step 3</span><span>对各因子做 z-score 标准化，让不同量纲的指标可以相加。</span></div>
+          <div class="step"><span class="tag">Step 4</span><span>按权重合成总分：短期动量 35%，中期动量 25%，趋势 20%，流动性 10%，低波动 10%。</span></div>
+          <div class="step"><span class="tag">Step 5</span><span>取分数最高的股票，并给每只股票设置目标仓位上限。</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>对应代码</h2>
+        <p class="muted">核心函数在 <code>quant_core/strategy/stock_selector.py</code>，日报和回测都会调用它。</p>
+      </section>
+      <section class="panel">
+        <h2>运行示例</h2>
+        <p class="muted">用最近一个交易日的回测日报，查看当日 AI 动量选股池 Top 5。</p>
+        <div class="action-row">
+          <button class="action-button" type="button" data-demo="selection-latest">查看最新选股结果</button>
+          <button class="action-button secondary" type="button" data-demo="selection-rejected">查看过滤统计</button>
+        </div>
+        <div id="demoOutput" class="demo-output">点击按钮后显示示例。</div>
+      </section>
+    </main>
+    <script src="./module-methods.js?v=20260515-methods"></script>
+    <script src="./module-actions.js?v=20260515-functions"></script>
+  </body>
+</html>

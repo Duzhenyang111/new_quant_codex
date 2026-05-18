@@ -1,0 +1,116 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>量化 BI 看板</title>
+    <script>
+      if (window.location.protocol === "file:") {
+        window.location.replace("http://127.0.0.1:8765/quant_mvp/quant_app/dashboard.html");
+      }
+    </script>
+    <link rel="stylesheet" href="./dashboard.css" />
+  </head>
+  <body>
+    <main class="dashboard-shell">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Quant BI Dashboard</p>
+          <h1>量化全局统计看板</h1>
+          <p class="muted">账户表现、真实大盘指数、股票池宽度与个股趋势集中查看</p>
+        </div>
+        <nav class="top-actions">
+          <a class="link-button" href="./index.html">首页</a>
+          <a class="link-button" href="./report.html">日报</a>
+          <a class="link-button" href="./selection.html">选股</a>
+          <a class="link-button" href="./strategy.html">策略</a>
+          <button id="refreshButton" class="icon-button" type="button" title="刷新看板" aria-label="刷新看板">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v6h-6" /></svg>
+          </button>
+        </nav>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="kpi-card">
+          <span>最新总资产</span>
+          <strong id="latestAssets">--</strong>
+          <small id="latestDate">--</small>
+        </article>
+        <article class="kpi-card">
+          <span>账户累计收益</span>
+          <strong id="cumulativeReturn">--</strong>
+          <small>vs 初始 100,000</small>
+        </article>
+        <article class="kpi-card">
+          <span id="latestIndexName">大盘指数</span>
+          <strong id="latestIndexReturn">--</strong>
+          <small>真实指数当日涨跌</small>
+        </article>
+        <article class="kpi-card">
+          <span>指数数据</span>
+          <strong id="indexCoverage">--</strong>
+          <small id="dataRange">--</small>
+        </article>
+      </section>
+      <section class="panel wide">
+        <div class="panel-heading">
+          <div>
+            <h2>账户与大盘走势</h2>
+            <p class="muted">大盘数据来自免费 AkShare 指数日线，默认上证指数，可切换深证成指、沪深300。</p>
+          </div>
+          <div class="top-actions">
+            <select id="indexSelect" class="select" aria-label="选择大盘指数"></select>
+            <div class="segmented" aria-label="走势粒度">
+              <button class="segmented-button active" type="button" data-chart-mode="day">日</button>
+              <button class="segmented-button" type="button" data-chart-mode="month">月</button>
+              <button class="segmented-button" type="button" data-chart-mode="year">年</button>
+            </div>
+          </div>
+        </div>
+        <div class="chart-wrap" id="overviewWrap">
+          <svg id="overviewChart" viewBox="0 0 980 330" role="img" aria-label="账户与大盘走势"></svg>
+          <div id="overviewTooltip" class="tooltip" hidden></div>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>本地股票池宽度</h2>
+            <span class="muted">上涨 / 下跌 / 平盘</span>
+          </div>
+          <div class="chart-wrap compact" id="breadthWrap">
+            <svg id="breadthChart" viewBox="0 0 520 260" role="img" aria-label="本地股票池宽度"></svg>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h2>个股趋势</h2>
+            <select id="symbolSelect" class="select" aria-label="选择股票"></select>
+          </div>
+          <div class="chart-wrap compact" id="stockWrap">
+            <svg id="stockChart" viewBox="0 0 520 260" role="img" aria-label="个股趋势"></svg>
+            <div id="stockTooltip" class="tooltip" hidden></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel wide">
+        <div class="panel-heading">
+          <h2>数据状态</h2>
+          <span id="dataSource" class="muted">--</span>
+        </div>
+        <div class="status-grid">
+          <span id="statusRows">--</span>
+          <span id="statusSymbols">--</span>
+          <span id="statusDateRange">--</span>
+          <span id="statusNote">--</span>
+        </div>
+      </section>
+    </main>
+    <script src="./dashboard.js?v=20260515-functions"></script>
+  </body>
+</html>
+
+

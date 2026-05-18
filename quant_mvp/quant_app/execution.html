@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>模拟执行</title>
+    <link rel="stylesheet" href="./module.css" />
+  </head>
+  <body>
+    <main class="module-shell">
+      <header class="module-header">
+        <div>
+          <p class="eyebrow">Execution Simulator</p>
+          <h1>执行页面</h1>
+          <p class="muted">解释系统如何把昨天生成的计划，在今天开盘价上做模拟买卖。</p>
+        </div>
+        <nav class="nav">
+          <a href="./index.html">首页</a>
+          <a href="./strategy.html">策略</a>
+          <a href="./report.html">日报</a>
+        </nav>
+      </header>
+      <section class="panel grid">
+        <article class="info-card"><strong>执行价格</strong><span>所有买卖都使用今日开盘价，不使用盘中价格。</span></article>
+        <article class="info-card"><strong>交易限制</strong><span>A 股按 100 股一手取整，涨停不买，跌停不卖。</span></article>
+        <article class="info-card"><strong>费用</strong><span>买入收佣金，卖出收佣金和印花税，最低佣金按 5 元处理。</span></article>
+      </section>
+      <section class="panel method-panel" data-method-page="execution">
+        <div class="panel-heading">
+          <div>
+            <h2>程序方法与原理</h2>
+            <p class="muted">这里解释模拟交易如何成交、如何计算费用，以及为什么能避免未来函数。</p>
+          </div>
+          <label class="method-control">
+            <span>选择执行方法</span>
+            <select class="method-select" aria-label="选择执行方法"></select>
+          </label>
+        </div>
+        <div class="method-content" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h2>执行顺序</h2>
+        <div class="pipeline">
+          <div class="step"><span class="tag">Step 1</span><span>先处理卖出订单，释放现金。</span></div>
+          <div class="step"><span class="tag">Step 2</span><span>再处理买入订单，根据目标仓位和现金计算可买数量。</span></div>
+          <div class="step"><span class="tag">Step 3</span><span>买入数量按 100 股取整，现金不足则跳过或部分买入。</span></div>
+          <div class="step"><span class="tag">Step 4</span><span>更新账户 cash、positions，并生成 trades 和 skipped_orders。</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>运行示例</h2>
+        <p class="muted">查看最新日报里，当天按开盘价实际模拟执行的交易和跳过原因。</p>
+        <div class="action-row">
+          <button class="action-button" type="button" data-demo="execution-trades">查看今日执行记录</button>
+          <button class="action-button secondary" type="button" data-demo="execution-skipped">查看跳过订单</button>
+        </div>
+        <div id="demoOutput" class="demo-output">点击按钮后显示示例。</div>
+      </section>
+    </main>
+    <script src="./module-methods.js?v=20260515-methods"></script>
+    <script src="./module-actions.js?v=20260515-functions"></script>
+  </body>
+</html>

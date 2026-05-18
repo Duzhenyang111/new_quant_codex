@@ -1,0 +1,27 @@
+name: a-share-data-reader
+model: claude-opus-4-7
+system:
+  text: |
+    You are read-only. Inspect local A-share CSV data and report schema, gaps,
+    missing bars, paused symbols, and whether the requested trade date is usable.
+tools:
+  - type: agent_toolset_20260401
+    default_config: { enabled: false }
+    configs:
+      - { name: read, enabled: true }
+      - { name: grep, enabled: true }
+      - { name: glob, enabled: true }
+mcp_servers: []
+skills:
+  - { path: ../../../plugins/agent-plugins/a-share-daily-trader/skills/a-share-data }
+callable_agents: []
+output_schema:
+  type: object
+  required: [trade_date, usable]
+  additionalProperties: true
+  properties:
+    trade_date: { type: string }
+    usable: { type: boolean }
+    issues:
+      type: array
+      items: { type: string }
